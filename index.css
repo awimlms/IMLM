@@ -1,0 +1,216 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color:#dcdee0;
+    overflow-x: hidden !important;
+}
+
+.page-container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Montserrat", sans-serif;
+}
+
+.page-title {
+    font-size: 56px;
+    font-weight: 700;
+    color: #00BD84;
+}
+
+.page-subtitle {
+    font-size: 116px;
+    font-weight: 900;
+    color: #146C71;
+}
+
+.page-footer {
+    position: absolute;
+    bottom: 5vh;
+    font-size: 20px;
+    font-weight: 400;
+    color: #797979;
+}
+
+.subpage-container {
+    margin: auto;
+    width: 100%;
+    max-width: 1500px;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 32px 64px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.subpage-content {
+    display: flex;
+}
+
+.subpage-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #146C71;
+    text-decoration: none;
+}
+
+.subpage-subtitle {
+    font-size: 65px;
+    font-weight: 900;
+    color: #146C71;
+    margin-bottom: 32px;
+    text-decoration: none;
+}
+
+.modules-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 64px 16px;
+}
+
+.modules-container-column {
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    width: 500px;
+    padding: 0 16px;
+}
+
+.modules-container > * {
+    flex-basis: 20%;
+}
+
+.module-container {
+    width: min(100%, 375px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 32px;
+    gap: 32px;
+    border-radius: 16px;
+    transition: all 0.25s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.module-container:hover {
+    transform: scale(1.05);
+}
+
+.module-1 {
+    background: #00BD84;
+    color: white;
+}
+
+.module-2 {
+    background: #F89F47;
+    color: white;
+}
+
+.module-3 {
+    background: #FF5388;
+    color: white;
+}
+
+.module-4 {
+    background: #00A8FF;
+    color: white;
+}
+
+.module-text * {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    margin: 0;
+}
+
+.module-title {
+    font-size: 26px;
+    font-weight: 900;
+}
+
+.module-description {
+    font-size: 19px;
+}
+
+.module-image {
+    width: min(40%, 190px);
+    height: auto;
+}
+
+#content {
+    width: 100%;
+    position: relative;
+}
+
+.universal_webkit, .popup-layer {
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.trial_banner {
+    display: none !important;
+}
+
+.launch-screen {
+    position: absolute !important;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.48);
+}
+
+.launch-screen .launch-screen-button {
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    right: 0;
+    left: 0;
+    border-radius: 100%;
+    width: 96px;
+    height: 96px;
+    position: absolute;
+}
+
+.launch-screen .launch-screen-button__play-icon {
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    right: 0;
+    left: 0;
+    border-radius: 100%;
+    width: 90px;
+    height: 90px;
+    box-shadow: 0 12px 50px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s ease-in-out;
+}
+
+.launch-screen .launch-screen-button__icon {
+    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB3aWR0aD0iMjhweCIgaGVpZ2h0PSIzM3B4IiB2aWV3Qm94PSIwIDAgMjguMzAyIDMzLjI0MiI+DQoJPHBhdGggZD0iTTAsMS44VjMxLjQ0MmExLjgsMS44LDAsMCwwLDIuNzI2LDEuNTQzbDI0LjctMTQuODJhMS44LDEuOCwwLDAsMCwwLTMuMDg3TDIuNzI2LjI1N0ExLjgsMS44LDAsMCwwLDAsMS44WiIgc3R5bGU9ImZpbGw6IzMzMyIvPg0KPC9zdmc+) no-repeat center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    right: 0;
+    left: 6px;
+    width: 90px;
+    height: 90px;
+}

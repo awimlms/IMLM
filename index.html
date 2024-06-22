@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Interactive Multimedia Learning Modules for Academic Writing</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="index.css" type="text/css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <audio id="welcomesound" hidden controls autoplay>
+      <source src="background-music/welcomesound.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="backgroundsound" hidden controls autoplay loop="true">
+      <source src="background-music/80. Learning.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="page-container">
+        <h6 class="page-title">Interactive Multimedia Learning Modules for</h6>
+        <p class="page-subtitle">Academic Writing</p>
+        <div class="modules-container">
+          <a class="module-container module-1" href="module-1/index.html">
+            <div class="module-text">
+                <h6 class="module-title">MODULE 1</h6>
+                <p class="module-description">Basics of IEEE Referencing System</p>
+            </div>
+            <img class="module-image" src="module-1/data/img3.gif">
+          </a>
+          <a class="module-container module-2" href="module-2/index.html">
+            <div class="module-text">
+                <h6 class="module-title">MODULE 2</h6>
+                <p class="module-description">Fundamentals of Research</p>
+            </div>
+            <img class="module-image" src="module-2/data/img4.gif">
+          </a>
+          <a class="module-container module-3" href="module-3/index.html">
+            <div class="module-text">
+                <h6 class="module-title">MODULE 3</h6>
+                <p class="module-description">Ethics in Research</p>
+            </div>
+            <img class="module-image" src="module-3/data/img10.gif">
+          </a>
+          <a class="module-container module-4" href="module-4/index.html">
+            <div class="module-text">
+                <h6 class="module-title">MODULE 4</h6>
+                <p class="module-description">Data Commentary</p>
+            </div>
+            <img class="module-image" src="module-4/data/img5.gif">
+          </a>
+        </div>
+        <div class="page-footer">An institutional research by Dr. Felixberto Mercado, Dr. Claudia Odette Ayala, and Dr. Benilda N. Villenas</div>
+    </div>
+
+    <div class="launch-screen">
+      <div class="launch-screen-button">
+        <div class="launch-screen-button__play-icon"></div>
+        <div class="launch-screen-button__icon"></div>
+      </div>
+    </div>
+
+    <script>
+      const launchScreen = document.getElementsByClassName("launch-screen")[0];
+      launchScreen.addEventListener("click", (event) => {
+        const welcomesound = document.getElementById("welcomesound");
+        const backgroundsound = document.getElementById("backgroundsound");
+        backgroundsound.volume = 0.2;
+
+        welcomesound.play();
+        welcomesound.addEventListener("ended", function(){
+          backgroundsound.play();
+        });
+
+        launchScreen.remove();
+      });
+    </script>
+  </body>
+</html>
