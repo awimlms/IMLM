@@ -55,6 +55,18 @@
     <audio id="backgroundsound" hidden controls loop="true">
       <source src="../background-music/15. Upbeat.mp3" type="audio/mpeg">
     </audio>
+    <div id="backgroundsoundvolume" class="uikit-collapsed-control collapsable-buttons-group__collapsable-button uikit-collapsed-control_collapsed collapsable-buttons-group__collapsable-button_collapsed" style="display: none;">
+      <div class="uikit-collapsed-control__collapsed-component">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-music-note" viewBox="0 0 20 20">
+          <path d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2"></path>
+          <path fill-rule="evenodd" d="M9 3v10H8V3z"></path>
+          <path d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5z"></path>
+        </svg>
+      </div>
+      <div class="volume-slider-wrapper uikit-collapsed-control__expanded-component" style="margin-top: -6px">
+        <input class="volume-slider" type="range" min="0" max="100" value="20">
+      </div>
+    </div>
 
 	<script src="data/browsersupport.js?5425ABF1"></script>
 	<script src="data/player.js?5425ABF1"></script>
@@ -141,11 +153,41 @@
 	var backgroundsound = document.getElementById("backgroundsound");
 	backgroundsound.volume = 0.2;
 	var audioNarrationController = player.audioNarrationController().Ca;
-	audioNarrationController.startEvent().addHandler(function () {
-		backgroundsound.play();
-	});
-	audioNarrationController.stopEvent().addHandler(function () {
-		backgroundsound.pause();
+	audioNarrationController.stateChangeEvent().addHandler(function (e) {
+		const status = e.Pa;
+		if (status === "started" && backgroundsound.paused) backgroundsound.play();
+		if (status === "stopped" && !backgroundsound.paused) backgroundsound.pause();
+		
+		var backgroundsoundvolumeoriginal = document.getElementById("backgroundsoundvolume");
+		var backgroundsoundvolume = document.getElementById("backgroundsoundvolumecopy");
+		if (!backgroundsoundvolume)
+		{
+			backgroundsoundvolume = backgroundsoundvolumeoriginal.cloneNode(true);
+			backgroundsoundvolume.id = "backgroundsoundvolumecopy";
+			backgroundsoundvolume.style.display = null;
+			backgroundsoundvolume.addEventListener("mouseover", function() {
+				backgroundsoundvolume.classList.remove("uikit-collapsed-control_collapsed");
+				backgroundsoundvolume.classList.remove("collapsable-buttons-group__collapsable-button_collapsed");
+			});
+			backgroundsoundvolume.addEventListener("mouseout", function() {
+				backgroundsoundvolume.classList.add("uikit-collapsed-control_collapsed");
+				backgroundsoundvolume.classList.add("collapsable-buttons-group__collapsable-button_collapsed");
+			});
+
+			var inputSlider = backgroundsoundvolume.querySelector(".volume-slider");
+			inputSlider.addEventListener("change", function(e) {
+				backgroundsound.volume = parseFloat(inputSlider.value) / 100;
+			});
+
+			var backgroundsoundvolumeButton = backgroundsoundvolume.querySelector(".uikit-collapsed-control__collapsed-component")
+			backgroundsoundvolumeButton.addEventListener("click", function() {
+				inputSlider.value = parseFloat(inputSlider.value) > 0 ? "0" : "100";
+				backgroundsound.volume = parseFloat(inputSlider.value) / 100;
+			});
+
+			var soundButton = document.querySelector(".collapsable-buttons-group > .uikit-collapsed-control");
+			soundButton.after(backgroundsoundvolume);
+		}
 	});
 })(player);
 

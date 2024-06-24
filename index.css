@@ -214,3 +214,35 @@ body {
     width: 90px;
     height: 90px;
 }
+
+input[type="range"] {
+    margin-top: -6px;
+    background: var(--volume-control-playback-color);
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track, input[type="range"]::-moz-range-track {
+    background: var(--volume-control-background-color);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    background: rgba(97,104,112,1);
+    height: 12px;
+    width: 12px;   
+    border-radius: 100%; 
+    opacity: 1;
+ }
+
+ input[type="range"]::-moz-range-thumb {
+    border: none; /*Removes extra border that FF applies*/
+    background: rgba(97,104,112,1);
+    height: 12px;
+    width: 12px;
+    border-radius: 100%;
+}
+
+.volume-slider__track {
+    background: var(--volume-control-playback-color);
+}
